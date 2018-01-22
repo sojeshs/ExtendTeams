@@ -1,0 +1,15 @@
+ $proxywebhook='https://outlook.office.com/webhook/c60aa422-38dc-45c2-a91e-85e880074502@81e2d251-2e4f-4b1b-89c3-6c39e0044a07/IncomingWebhook/bba717434d094391add0447cb38a2231/9b133d53-8a12-40f5-aac3-817b53c8f5a4'
+
+$body=@{
+        'text'='AlerName: "Web Proxy is currently running out of conenctions"'
+        }
+
+  $params = @{
+                Headers = @{'accept' = 'application/json'}
+                Body = $Body | convertto-json
+                Method = 'Post'
+                URI = $proxywebhook
+                }
+
+Invoke-RestMethod @params
+ 
